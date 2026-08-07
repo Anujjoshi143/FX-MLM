@@ -168,8 +168,8 @@ button:active { transform: translateY(2px); box-shadow: 0 4px 15px rgba(255, 159
 }
 .pay-details { color: #2d2d44; margin-top: 12px; font-size: 0.92rem; line-height: 1.6; font-weight: 600; }
 .amount-big {
-    color: #090910; font-size: 1.95rem; font-weight: 900; margin: 12px 0;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+    color: #ffd700; font-size: 1.95rem; font-weight: 900; margin: 12px 0;
+    text-shadow: 0 2px 10px rgba(255,215,0,0.55);
 }
 
 /* Dashboard Layout */
@@ -400,7 +400,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
         <div class="qr-wrapper">
             <!-- 1. UPI QR CODE -->
             <div class="qr-box">
-                <img id="payQrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=9079295649-11@ybl&pn=TirupatiFX&am=1000" alt="UPI QR">
+                <img id="payQrImage" src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=upi://pay?pa=9079295649-11@ybl&pn=TirupatiFX&am=99" alt="UPI QR">
             </div>
             <div id="payAmountBig" class="amount-big">₹ 1,000</div>
             <div class="upi-text" onclick="copyUpiId()" style="user-select: all; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; justify-content: center;" title="Click to Copy UPI ID">
@@ -431,7 +431,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
 
         <div class="input-group" style="margin-top: 18px;">
             <i class="fas fa-receipt"></i>
-            <input type="text" id="payUtr" placeholder="Enter 12-Digit UTR Number *" maxlength="12" onkeydown="if(event.key==='Enter') submitPaymentVerify()">
+            <input type="text" id="payUtr" placeholder="Enter 6-12 Digit UTR / Reference Number *" maxlength="12" inputmode="numeric" onkeydown="if(event.key==='Enter') submitPaymentVerify()">
         </div>
 
         <button onclick="submitPaymentVerify()" style="background: linear-gradient(135deg, #00e676, #00b0ff);">Submit for Verification ✓</button>
@@ -502,7 +502,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                     <button onclick="testCloudConnection()" style="width: auto; padding: 10px 18px; font-size: 0.9rem; background: #00e676; color: #000; font-weight:bold; box-shadow: 0 0 10px rgba(0,230,118,0.4);"><i class="fas fa-shield-alt"></i> 🛡️ Test Cloud Rules</button>
                     <button onclick="runAutomatedAutopoolEngine(false)" style="width: auto; padding: 10px 18px; font-size: 0.9rem; background: linear-gradient(135deg, #ff9f1c, #ffbf69); color: #000; font-weight:bold; box-shadow: 0 0 10px rgba(255,159,28,0.4);"><i class="fas fa-sync"></i> ⚡ Run 12-Pool Autopool Matrix Engine</button>
                     <button onclick="forceSyncFromCloud()" style="width: auto; padding: 10px 18px; font-size: 0.9rem; background: #2979ff; color: #fff; font-weight:bold; border: 1px solid rgba(255,255,255,0.2);"><i class="fas fa-cloud-download-alt"></i> 🌐 Sync Latest Cloud Data</button>
-                    <button onclick="runDailyCron()" style="width: auto; padding: 10px 20px; font-size: 0.9rem;"><i class="fas fa-forward"></i> Run Daily Cron (₹50)</button>
+                    <button onclick="runDailyCron()" style="width: auto; padding: 10px 20px; font-size: 0.9rem;"><i class="fas fa-forward"></i> Run Daily Cron (₹5)</button>
                 </div>
             </div>
             
@@ -547,7 +547,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
             <!-- ADMIN: INSTANT COMPANY REFERRAL LINK CARD -->
             <div class="panel" style="border: 1px solid #00e676; background: linear-gradient(135deg, rgba(0,230,118,0.1), rgba(0,230,118,0.02));">
                 <h3><i class="fas fa-share-alt" style="color:#00e676;"></i> Company Official Direct Referral Link (Sponsor: ADMIN001)</h3>
-                <p style="color: #6b6b8b; margin-bottom: 15px; font-size: 0.9rem;">Is link se jo bhi register karega, uska Sponsor ID automatic <strong>ADMIN001</strong> fill ho jayega aur ₹150 Sponsor Bonus seedha Admin ke wallet me aayega!</p>
+                <p style="color: #6b6b8b; margin-bottom: 15px; font-size: 0.9rem;">Is link se jo bhi register karega, uska Sponsor ID automatic <strong>ADMIN001</strong> fill ho jayega aur ₹15 Sponsor Bonus seedha Admin ke wallet me aayega!</p>
                 
                 <div style="background: #141424; padding: 15px; border-radius: 10px; border: 1px solid #00e676; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;">
                     <div style="flex: 1; min-width: 250px;">
@@ -572,7 +572,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                     </div>
                     <div>
                         <label style="font-size: 0.78rem; color: #6b6b8b; display: block; margin-bottom: 5px;">JOINING FEE (₹) *</label>
-                        <input type="number" id="adminFeeInput" value="1000" style="background: #0f0f1a; border: 1px solid #2d2d44; color: #fff; padding: 12px; border-radius: 8px; width: 100%;">
+                        <input type="number" id="adminFeeInput" value="99" style="background: #0f0f1a; border: 1px solid #2d2d44; color: #fff; padding: 12px; border-radius: 8px; width: 100%;">
                     </div>
                     <div>
                         <label style="font-size: 0.78rem; color: #6b6b8b; display: block; margin-bottom: 5px;">BANK NAME *</label>
@@ -604,7 +604,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                     </div>
                     <div style="text-align: center; flex: 1; min-width: 130px;">
                         <div style="font-size: 0.75rem; color: #ffbf69; margin-bottom: 6px; text-transform: uppercase; font-weight: 800;">Current Payment QR</div>
-                        <img id="adminQrPreviewImg" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=9079295649-11@ybl&pn=TirupatiFX&am=1000" style="width: 110px; height: 110px; border: 2px solid #7c3aed; border-radius: 12px; background: #fff; padding: 4px;">
+                        <img id="adminQrPreviewImg" src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=upi://pay?pa=9079295649-11@ybl&pn=TirupatiFX&am=99" style="width: 110px; height: 110px; border: 2px solid #7c3aed; border-radius: 12px; background: #fff; padding: 4px;">
                         <div style="margin-top: 8px;">
                             <button type="button" class="btn-sm btn-red" onclick="resetAdminAutoQr()" style="font-size: 0.72rem; padding: 6px 10px; width: auto; text-transform: none;">⚡ Reset to Auto UPI QR</button>
                         </div>
@@ -723,11 +723,11 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                 
                 <div style="display: grid; gap: 15px;">
                     <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Total Joining Fees (₹1000 x Users)</span>
+                        <span>Total Joining Fees (₹99 x Users)</span>
                         <span style="color: #fff; font-weight: bold;" id="cfJoining">₹0</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Paid to Direct Sponsors (₹150 each)</span>
+                        <span>Paid to Direct Sponsors (₹15 each)</span>
                         <span style="color: #00e676; font-weight: bold;" id="cfSponsorDetail">₹0</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
@@ -735,7 +735,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                         <span style="color: #2979ff; font-weight: bold;" id="cfGrowth">₹0</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Autopool Reserve (₹550 per user)</span>
+                        <span>Autopool Reserve (₹55 per user)</span>
                         <span style="color: #ff9f1c; font-weight: bold;" id="cfAutopool">₹0</span>
                     </div>
                     <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px; border: 1px solid #ff1744;">
@@ -764,7 +764,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                 </div>
                 <div class="stat-card">
                     <h4>Direct Referrals</h4>
-                    <div class="val" id="userDirects">0/3</div>
+                    <div class="val" id="userDirects">0/4</div>
                 </div>
                 <div class="stat-card blue">
                     <h4>Current Pool (10 Cr Club)</h4>
@@ -809,7 +809,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
 
             <div class="panel" style="border: 1px solid #ff9f1c;">
                 <h3><i class="fas fa-share-alt"></i> Invite Members (Your Referral Link & ID)</h3>
-                <p style="color: #6b6b8b; margin-bottom: 15px;">Aapka Referral Link use karke jo bhi register karega, uska Sponsor ID automatic aapka ID fill ho jayega aur aapko ₹150 instant bonus milega!</p>
+                <p style="color: #6b6b8b; margin-bottom: 15px;">Aapka Referral Link use karke jo bhi register karega, uska Sponsor ID automatic aapka ID fill ho jayega aur aapko ₹15 instant bonus milega!</p>
                 
                 <div style="background: #0f0f1a; padding: 15px; border-radius: 10px; border: 1px solid #2d2d44; margin-bottom: 12px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
                     <div>
@@ -858,7 +858,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                 
                 <div class="input-group">
                     <i class="fas fa-rupee-sign"></i>
-                    <input type="number" id="withdrawAmtInput" placeholder="Enter Amount to Withdraw (₹)" style="background: #0f0f1a;">
+                    <input type="number" id="withdrawAmtInput" placeholder="Enter Amount to Withdraw (Min ₹500)" style="background: #0f0f1a;">
                 </div>
                 <div class="input-group">
                     <i class="fas fa-university"></i>
@@ -896,6 +896,8 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
 <script>
 // ================= DATA & 1000% GUARANTEED LIVE CLOUD SYNC ENGINE =================
 const DB_KEY = 'tirupati_v3_clean';
+const PRICING = Object.freeze({ JOINING_FEE: 99, DIRECT_BONUS: 15, ROI_DAILY: 5, ROI_DAYS: 40, ROI_MIN_DIRECTS: 4, VERSION: 3, AUTOPOOL_RESERVE: 55, COMPANY_RESERVE: 29, MIN_WITHDRAWAL: 500 });
+
 let LIVE_CLOUD_API = "https://jsonblob.com/api/jsonBlob/019fb1b0-2b21-74f7-89b5-65a8e9941d1f";
 
 function selfHealCloudApi() {
@@ -917,7 +919,7 @@ function selfHealCloudApi() {
 let appData = {
     settings: {
         upiId: "9079295649-11@ybl",
-        joiningFee: 1000,
+        joiningFee: 99,
         payeeName: "TirupatiFX",
         whatsappNumber: "919079295649",
         bankName: "STATE BANK OF INDIA",
@@ -941,14 +943,13 @@ let appData = {
 };
 
 let defaultFirebaseConfig = {
-    apiKey: "AIzaSyAUHIMu0uY1ke-QR1amSGLOwCUveBmLbgc",
-    authDomain: "fxmlm-3f293.firebaseapp.com",
-    databaseURL: "https://fxmlm-3f293-default-rtdb.firebaseio.com",
-    projectId: "fxmlm-3f293",
-    storageBucket: "fxmlm-3f293.firebasestorage.app",
-    messagingSenderId: "263411761473",
-    appId: "1:263411761473:web:72f1f1178bf6a3ab0e61c0",
-    measurementId: "G-MLM7SRHBYX"
+    apiKey: "AIzaSyAO9jcxtG4hetxFU_8Font3b4UnbE0-_i4",
+    authDomain: "mlm1-ffddf.firebaseapp.com",
+    projectId: "mlm1-ffddf",
+    storageBucket: "mlm1-ffddf.firebasestorage.app",
+    messagingSenderId: "208218082510",
+    appId: "1:208218082510:web:873e3ffdaad6398d6c549f",
+    measurementId: "G-CB9L3894L1"
 };
 
 let firestoreDb = null;
@@ -976,6 +977,18 @@ function verifyPassword(inputPass, userObj) {
 }
 
 function ensureAdminCredentials() {
+    // Migrate legacy pricing values to the current ₹99 plan without changing the data model.
+    if (appData.settings && appData.settings.joiningFee === 1000) appData.settings.joiningFee = PRICING.JOINING_FEE;
+    // One-time migration of legacy derived counters; transaction/user schema remains unchanged.
+    if (appData.pricingVersion !== PRICING.VERSION) {
+        if (appData.settings && appData.settings.joiningFee === 1000) appData.settings.joiningFee = PRICING.JOINING_FEE;
+        if (appData.stats) {
+            if (appData.stats.sponsorPaid === 150) appData.stats.sponsorPaid = PRICING.DIRECT_BONUS;
+            if (appData.stats.autopoolReserve === 550) appData.stats.autopoolReserve = PRICING.AUTOPOOL_RESERVE;
+            if (appData.stats.totalDistributed === 150) appData.stats.totalDistributed = PRICING.DIRECT_BONUS;
+        }
+        appData.pricingVersion = PRICING.VERSION;
+    }
     let admin = appData.users.find(u => u.id === 'ADMIN001');
     if (!admin) {
         admin = { id: 'ADMIN001', name: 'Super Admin', passHash: 'e6ddc0d1fd19ddeb', role: 'admin', wallet: 0, profit: 0 };
@@ -988,7 +1001,7 @@ function ensureAdminCredentials() {
     if (!appData.settings) {
         appData.settings = { 
             upiId: "9079295649-11@ybl", 
-            joiningFee: 1000, 
+            joiningFee: 99, 
             payeeName: "TirupatiFX",
             whatsappNumber: "919079295649",
             bankName: "STATE BANK OF INDIA",
@@ -1029,19 +1042,19 @@ function runAutomatedAutopoolEngine(silent = false) {
     let totalCashPayout = 0;
 
     // 12-Pool Cash Profit Table (Net Wallet Profit after automated upgrade deduction)
-    const POOL_CASH_REWARDS = {
-        1: 1200,     // Pool 1 -> Pool 2 (Bronze -> Silver)
-        2: 2000,     // Pool 2 -> Pool 3
-        3: 4000,     // Pool 3 -> Pool 4
-        4: 10000,    // Pool 4 -> Pool 5
-        5: 12000,    // Pool 5 -> Pool 6
-        6: 25000,    // Pool 6 -> Pool 7
-        7: 50000,    // Pool 7 -> Pool 8
-        8: 100000,   // Pool 8 -> Pool 9 (1 Lakh)
-        9: 150000,   // Pool 9 -> Pool 10 (1.5 Lakh)
-        10: 300000,  // Pool 10 -> Pool 11 (3 Lakh)
-        11: 500000,  // Pool 11 -> Pool 12 (5 Lakh)
-        12: 98845800 // Pool 12 (World King -> 9.88+ Crore!)
+    const POOL_MATRIX = {
+        1: { name: "Bronze", gross: 200, upgrade: 80, net: 120 },
+        2: { name: "Silver", gross: 350, upgrade: 150, net: 200 },
+        3: { name: "Gold", gross: 700, upgrade: 300, net: 400 },
+        4: { name: "Diamond", gross: 1800, upgrade: 800, net: 1000 },
+        5: { name: "Platinum", gross: 4000, upgrade: 1500, net: 2500 },
+        6: { name: "Ruby", gross: 9000, upgrade: 4000, net: 5000 },
+        7: { name: "Sapphire", gross: 18000, upgrade: 8000, net: 10000 },
+        8: { name: "Emerald", gross: 45000, upgrade: 20000, net: 25000 },
+        9: { name: "Crown", gross: 100000, upgrade: 50000, net: 50000 },
+        10: { name: "Royal Crown", gross: 500000, upgrade: 250000, net: 250000 },
+        11: { name: "Ambassador", gross: 2000000, upgrade: 1000000, net: 1000000 },
+        12: { name: "World King", gross: 9880000, upgrade: 0, net: 9880000 }
     };
 
     users.forEach((u, idx) => {
@@ -1054,7 +1067,7 @@ function runAutomatedAutopoolEngine(silent = false) {
             const requiredTotalForNextPool = positionInCommunity * Math.pow(4, currentPool);
 
             if (totalUsers >= requiredTotalForNextPool) {
-                const cashReward = POOL_CASH_REWARDS[currentPool] || 1000;
+                const cashReward = (POOL_MATRIX[currentPool] || POOL_MATRIX[1]).net;
                 currentPool++;
                 u.pool = currentPool;
                 u.wallet = (u.wallet || 0) + cashReward;
@@ -1104,7 +1117,7 @@ function resetAdminAutoQr() {
     if (!appData.settings) appData.settings = {};
     delete appData.settings.customQrImage;
     const upi = appData.settings.upiId || "9079295649-11@ybl";
-    const fee = appData.settings.joiningFee || 1000;
+    const fee = appData.settings.joiningFee || 99;
     if (qrPrev) {
         qrPrev.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(`upi://pay?pa=${upi}&pn=TirupatiFX&am=${fee}`)}`;
     }
@@ -1115,7 +1128,7 @@ function resetAdminAutoQr() {
 function updateAdminPaymentSettings() {
     ensureAdminCredentials();
     const newUpi = document.getElementById('adminUpiInput').value.trim();
-    const newFee = parseInt(document.getElementById('adminFeeInput').value) || 1000;
+    const newFee = parseInt(document.getElementById('adminFeeInput').value) || 99;
     const newBank = document.getElementById('adminBankNameInput').value.trim() || "STATE BANK OF INDIA";
     const newHolder = document.getElementById('adminAccHolderInput').value.trim() || "TIRUPATI FX PVT LTD";
     const newAccNum = document.getElementById('adminAccNumInput').value.trim() || "401234567890";
@@ -1239,7 +1252,7 @@ function renderPaymentScreen() {
     if (!appData.settings) {
         appData.settings = { 
             upiId: "9079295649-11@ybl", 
-            joiningFee: 1000, 
+            joiningFee: 99, 
             payeeName: "TirupatiFX",
             whatsappNumber: "919079295649",
             bankName: "STATE BANK OF INDIA",
@@ -1249,7 +1262,7 @@ function renderPaymentScreen() {
         };
     }
     const upi = appData.settings.upiId || "9079295649-11@ybl";
-    const fee = appData.settings.joiningFee || 1000;
+    const fee = appData.settings.joiningFee || 99;
     const name = appData.settings.payeeName || "TirupatiFX";
     const bankName = appData.settings.bankName || "STATE BANK OF INDIA";
     const accNum = appData.settings.accountNumber || "401234567890";
@@ -1427,7 +1440,7 @@ function copyMyReferralLink() {
 
 function shareReferralOnWhatsApp() {
     const refLink = getMyReferralLink();
-    const text = `🚀 Join Tirupati FX today! Double your money with ₹2,000 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click my direct referral link to register now:\n${refLink}`;
+    const text = `🚀 Join Tirupati FX today! Double your money with ₹200 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click my direct referral link to register now:\n${refLink}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -1452,7 +1465,7 @@ function copyAdminReferralLink() {
 
 function shareAdminReferralOnWhatsApp() {
     const refLink = getAdminReferralLink();
-    const text = `🚀 Join Tirupati FX Official Company Network! Double your money with ₹2,000 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click our official company link to register now:\n${refLink}`;
+    const text = `🚀 Join Tirupati FX Official Company Network! Double your money with ₹200 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click our official company link to register now:\n${refLink}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -1576,7 +1589,7 @@ function adminSecureResetEntireDatabase() {
         appData = {
             settings: {
                 upiId: "9079295649-11@ybl",
-                joiningFee: 1000,
+                joiningFee: 99,
                 payeeName: "TirupatiFX",
                 whatsappNumber: "919079295649",
                 bankName: "STATE BANK OF INDIA",
@@ -1729,7 +1742,7 @@ function submitPaymentVerify() {
 
     if (utrEl) utrEl.style.borderColor = '';
 
-    if (!utr || utr.length < 6) {
+    if (!/^[A-Za-z0-9]{6,12}$/.test(utr)) {
         if (utrEl) {
             utrEl.style.borderColor = '#ff1744';
             utrEl.focus();
@@ -1747,6 +1760,7 @@ function submitPaymentVerify() {
     const nextId = 'TP' + (1000 + totalUsers + totalPending);
     
     if (!appData.pending || !Array.isArray(appData.pending)) appData.pending = [];
+    if (!appData.users || !Array.isArray(appData.users)) appData.users = [];
     appData.pending.push({
         id: nextId,
         name: name,
@@ -1882,7 +1896,7 @@ function updateAdminStats() {
     if (!appData.settings) {
         appData.settings = { 
             upiId: "9079295649-11@ybl", 
-            joiningFee: 1000, 
+            joiningFee: 99, 
             payeeName: "TirupatiFX", 
             whatsappNumber: "919079295649",
             bankName: "STATE BANK OF INDIA",
@@ -1904,7 +1918,7 @@ function updateAdminStats() {
     const prevWa = document.getElementById('previewWaText');
 
     if (upiEl && document.activeElement !== upiEl) upiEl.value = appData.settings.upiId || "9079295649-11@ybl";
-    if (feeEl && document.activeElement !== feeEl) feeEl.value = appData.settings.joiningFee || 1000;
+    if (feeEl && document.activeElement !== feeEl) feeEl.value = appData.settings.joiningFee || 99;
     if (bankEl && document.activeElement !== bankEl) bankEl.value = appData.settings.bankName || "STATE BANK OF INDIA";
     if (holderEl && document.activeElement !== holderEl) holderEl.value = appData.settings.accountHolder || "TIRUPATI FX PVT LTD";
     if (accNumEl && document.activeElement !== accNumEl) accNumEl.value = appData.settings.accountNumber || "401234567890";
@@ -1924,7 +1938,7 @@ function updateAdminStats() {
             qrPrevImg.src = customQr;
         } else {
             const upi = (appData.settings && appData.settings.upiId) ? appData.settings.upiId : "9079295649-11@ybl";
-            const fee = (appData.settings && appData.settings.joiningFee) ? appData.settings.joiningFee : 1000;
+            const fee = (appData.settings && appData.settings.joiningFee) ? appData.settings.joiningFee : PRICING.JOINING_FEE;
             qrPrevImg.src = `https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=${encodeURIComponent(`upi://pay?pa=${upi}&pn=TirupatiFX&am=${fee}`)}`;
         }
     }
@@ -1983,18 +1997,19 @@ function approvePending(index) {
     appData.users.push(newUser);
     appData.pending.splice(index, 1);
 
-    // Distribute Plan Money (₹1000) - ₹150 to Sponsor (works for BOTH Admin and User, uppercase/lowercase resilient!)
+    // Distribute Plan Money (₹99) - ₹15 to Sponsor (works for BOTH Admin and User, uppercase/lowercase resilient!)
     const spIdClean = (item.sponsor || 'ADMIN001').toString().trim().toUpperCase();
     const sponsorUser = appData.users.find(u => u.id.toUpperCase() === spIdClean);
     if (sponsorUser) {
-        sponsorUser.wallet = (sponsorUser.wallet || 0) + 150;
+        sponsorUser.wallet = (sponsorUser.wallet || 0) + 15;
         sponsorUser.directs = (sponsorUser.directs || 0) + 1;
-        if (sponsorUser.directs >= 3) sponsorUser.unlocked = true;
+        if (sponsorUser.directs >= 4) sponsorUser.unlocked = true;
     }
 
-    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + 550;
-    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + 150;
-    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + 150;
+    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + PRICING.AUTOPOOL_RESERVE;
+    appData.stats.companyReserve = (appData.stats.companyReserve || 0) + PRICING.COMPANY_RESERVE;
+    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + 15;
+    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + 15;
 
     runAutomatedAutopoolEngine(true);
     saveData(); // Atomic cloud save after pool advancement
@@ -2096,7 +2111,7 @@ function renderAllUsers() {
 
     displayList.forEach(u => {
         const tr = document.createElement('tr');
-        const status = u.unlocked ? '<span style="color:#00e676; font-weight:bold;">Active (Unlocked)</span>' : '<span style="color:#ff1744;">Locked (Directs: '+u.directs+'/3)</span>';
+        const status = u.unlocked ? '<span style="color:#00e676; font-weight:bold;">Active (Unlocked)</span>' : '<span style="color:#ff1744;">Locked (Directs: '+u.directs+'/4)</span>';
         tr.innerHTML = `
             <td><strong>${u.id}</strong></td>
             <td>${u.name}</td>
@@ -2179,25 +2194,26 @@ function addMemberDirect() {
     const spIdClean = sponsor.toString().trim().toUpperCase();
     const sponsorUser = appData.users.find(u => u.id.toUpperCase() === spIdClean);
     if (sponsorUser) {
-        sponsorUser.wallet = (sponsorUser.wallet || 0) + 150;
+        sponsorUser.wallet = (sponsorUser.wallet || 0) + 15;
         sponsorUser.directs = (sponsorUser.directs || 0) + 1;
-        if (sponsorUser.directs >= 3) sponsorUser.unlocked = true;
+        if (sponsorUser.directs >= 4) sponsorUser.unlocked = true;
     }
 
-    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + 550;
-    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + 150;
-    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + 150;
+    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + PRICING.AUTOPOOL_RESERVE;
+    appData.stats.companyReserve = (appData.stats.companyReserve || 0) + PRICING.COMPANY_RESERVE;
+    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + 15;
+    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + 15;
 
     saveData();
     renderAllUsers();
     updateAdminStats();
-    showNotif(`Added ${nextId} (${name}) & credited ₹150 sponsor bonus!`, 'success');
+    showNotif(`Added ${nextId} (${name}) & credited ₹15 sponsor bonus!`, 'success');
     runAutomatedAutopoolEngine(true);
 }
 
 function updateCashFlow() {
     const userCount = appData.users.filter(u => u.role === 'user').length;
-    const joiningFeeTotal = userCount * 1000;
+    const joiningFeeTotal = userCount * 99;
 
     document.getElementById('cfJoining').innerText = '₹' + joiningFeeTotal;
     document.getElementById('cfSponsorDetail').innerText = '₹' + appData.stats.sponsorPaid;
@@ -2215,13 +2231,14 @@ function runDailyCron() {
     
     appData.users.forEach(u => {
         if (u.role === 'user') {
-            if ((u.directs || 0) >= 3) u.unlocked = true;
+            if ((u.directs || 0) >= 4) u.unlocked = true;
 
-            if (u.unlocked && (u.daysCredited || 0) < 40) {
-                u.wallet = (u.wallet || 0) + 50;
+            if ((u.directs || 0) >= PRICING.ROI_MIN_DIRECTS && (u.daysCredited || 0) < PRICING.ROI_DAYS) {
+                u.unlocked = true;
+                u.wallet = (u.wallet || 0) + PRICING.ROI_DAILY;
                 u.daysCredited = (u.daysCredited || 0) + 1;
                 count++;
-                totalCredit += 50;
+                totalCredit += PRICING.ROI_DAILY;
             }
         }
     });
@@ -2237,7 +2254,7 @@ function runDailyCron() {
     saveData();
     updateAdminStats();
     refreshCurrentScreen();
-    showNotif(`✅ Daily cron completed! ${count} users credited ₹50 (Total ₹${totalCredit})`, 'success');
+    showNotif(`✅ Daily cron completed! ${count} users credited ₹5 (Total ₹${totalCredit})`, 'success');
 }
 
 // ================= USER FUNCTIONS =================
@@ -2277,7 +2294,7 @@ function loadUserDashboard() {
     if (idEl) idEl.innerText = u.id;
     if (sponEl) sponEl.innerText = u.sponsor || 'ADMIN001';
     if (shareEl) shareEl.innerText = u.id;
-    if (daysEl) daysEl.innerText = `Day ${u.daysCredited || 0}/40 (₹${(u.daysCredited || 0) * 50})`;
+    if (daysEl) daysEl.innerText = `Day ${u.daysCredited || 0}/40 (₹${(u.daysCredited || 0) * 5})`;
     if (refLinkEl) refLinkEl.innerText = getMyReferralLink();
 
     const lockDiv = document.getElementById('userLockStatus');
@@ -2290,11 +2307,11 @@ function loadUserDashboard() {
         lockDiv.style.background = 'rgba(255, 23, 68, 0.1)';
         lockDiv.style.border = '1px solid #ff1744';
         lockDiv.style.color = '#ff1744';
-        lockDiv.innerHTML = `🔒 LOCKED | Refer ${3 - (u.directs || 0)} more directs to unlock daily income!`;
+        lockDiv.innerHTML = `🔒 LOCKED | Refer ${4 - (u.directs || 0)} more directs to unlock daily income!`;
     }
     
     document.getElementById('userWallet').innerText = '₹' + (u.wallet || 0);
-    document.getElementById('userDirects').innerText = (u.directs || 0) + '/3';
+    document.getElementById('userDirects').innerText = (u.directs || 0) + '/4';
     document.getElementById('userPool').innerText = (u.pool || 1) + " / 12 (10 Cr Club)";
 
     // Update 12-Pool progress badge and card
@@ -2358,8 +2375,8 @@ function submitUserWithdraw() {
     const amt = parseInt(amtInput.value) || 0;
     const upi = upiInput.value.trim();
 
-    if (amt <= 0) {
-        showNotif("Kripya sahi withdrawal amount daalein!", "error");
+    if (amt < PRICING.MIN_WITHDRAWAL) {
+        showNotif(`Minimum withdrawal amount ₹${PRICING.MIN_WITHDRAWAL} hai!`, "error");
         return;
     }
     if (amt > (u.wallet || 0)) {
