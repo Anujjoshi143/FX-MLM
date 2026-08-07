@@ -7,10 +7,10 @@
 <!-- Google Search Console SEO Verification Tag -->
 <meta name="google-site-verification" content="Ko5oE2x_582HLvEFLc55iZjs47YjBu8BVTJefXsWPSg" />
 <meta name="description" content="TIRUPATI FX - Official Automated 12-Pool Lifetime Autopool Matrix & Daily Growth Income Web Application.">
-<meta name="keywords" content="TIRUPATI FX, Autopool Matrix, Daily Growth Income, MLM, 10 Crore Club, Fintech, Referral Income">
+<meta name="keywords" content="TIRUPATI FX, Autopool Matrix, Daily Growth Income, MLM, 1 Crore Club, Fintech, Referral Income">
 <meta name="robots" content="index, follow">
 <meta property="og:title" content="TIRUPATI FX - 12-Pool Autopool Matrix & Verification Portal">
-<meta property="og:description" content="Join TIRUPATI FX for Daily Growth Income & Lifetime ₹10 Crore Autopool Matrix.">
+<meta property="og:description" content="Join TIRUPATI FX for Daily Growth Income & Lifetime ₹1 Crore Autopool Matrix.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <!-- ================= 1. FIREBASE CLOUD FIRESTORE + REALTIME DATABASE SDKs (v8 Compat CDN) ================= -->
@@ -497,7 +497,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
         <!-- ADMIN: DASHBOARD -->
         <div id="adminDash" class="admin-view hidden">
             <div class="header-title">
-                <div>👑 Admin Dashboard (₹10 Crore Autopool System)</div>
+                <div>👑 Admin Dashboard (₹1 Crore Autopool System)</div>
                 <div style="display:flex; gap:10px; flex-wrap:wrap;">
                     <button onclick="testCloudConnection()" style="width: auto; padding: 10px 18px; font-size: 0.9rem; background: #00e676; color: #000; font-weight:bold; box-shadow: 0 0 10px rgba(0,230,118,0.4);"><i class="fas fa-shield-alt"></i> 🛡️ Test Cloud Rules</button>
                     <button onclick="runAutomatedAutopoolEngine(false)" style="width: auto; padding: 10px 18px; font-size: 0.9rem; background: linear-gradient(135deg, #ff9f1c, #ffbf69); color: #000; font-weight:bold; box-shadow: 0 0 10px rgba(255,159,28,0.4);"><i class="fas fa-sync"></i> ⚡ Run 12-Pool Autopool Matrix Engine</button>
@@ -767,7 +767,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                     <div class="val" id="userDirects">0/4</div>
                 </div>
                 <div class="stat-card blue">
-                    <h4>Current Pool (10 Cr Club)</h4>
+                    <h4>Current Pool (1 Cr Club)</h4>
                     <div class="val" id="userPool">1 / 12</div>
                 </div>
                 <div class="stat-card red">
@@ -776,10 +776,10 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                 </div>
             </div>
 
-            <!-- USER: 12-POOL AUTOPOOL PROGRESS (10 CRORE CLUB) -->
+            <!-- USER: 12-POOL AUTOPOOL PROGRESS (1 CRORE CLUB) -->
             <div class="panel" style="border: 1px solid #ff9f1c; background: linear-gradient(135deg, rgba(255,159,28,0.1), rgba(255,159,28,0.02));">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 12px;">
-                    <h3 style="color: #ff9f1c; margin: 0; border: none; padding: 0;"><i class="fas fa-crown"></i> My 12-Pool Autopool Progress (₹10 Crore Club)</h3>
+                    <h3 style="color: #ff9f1c; margin: 0; border: none; padding: 0;"><i class="fas fa-crown"></i> My 12-Pool Autopool Progress (₹1 Crore Club)</h3>
                     <span id="userPoolBadge" style="background: rgba(255,159,28,0.2); color: #ff9f1c; padding: 4px 12px; border-radius: 12px; font-size: 0.85rem; font-weight: bold;">Pool 1: Bronze</span>
                 </div>
                 <p style="color: #6b6b8b; margin-bottom: 12px; font-size: 0.9rem;">Aapki ID global community joinings ke hisab se automatic Pool 1 se Pool 12 tak promote hoti hai aur bacha hua profit wallet me credit hota hai (Zero out-of-pocket upgrade!).</p>
@@ -795,7 +795,7 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
                     </div>
                     <div>
                         <div style="color: #8b8b9e; font-size: 0.8rem; text-transform: uppercase;">Lifetime Target</div>
-                        <div style="color: #ff9f1c; font-size: 1.2rem; font-weight: bold; margin-top: 4px;">₹10 CRORE+</div>
+                        <div style="color: #ff9f1c; font-size: 1.2rem; font-weight: bold; margin-top: 4px;">₹1 CRORE+</div>
                     </div>
                 </div>
             </div>
@@ -895,10 +895,10 @@ tr:hover td { background: rgba(255, 159, 28, 0.08); color: #fff; transform: scal
 
 <script>
 // ================= DATA & 1000% GUARANTEED LIVE CLOUD SYNC ENGINE =================
-const DB_KEY = 'tirupati_v3_clean';
+const DB_KEY = 'tirupati_v4_fresh';
 const PRICING = Object.freeze({ JOINING_FEE: 99, DIRECT_BONUS: 15, ROI_DAILY: 5, ROI_DAYS: 40, ROI_MIN_DIRECTS: 4, VERSION: 3, AUTOPOOL_RESERVE: 55, COMPANY_RESERVE: 29, MIN_WITHDRAWAL: 500 });
 
-let LIVE_CLOUD_API = "https://jsonblob.com/api/jsonBlob/019fb1b0-2b21-74f7-89b5-65a8e9941d1f";
+let LIVE_CLOUD_API = null;
 
 function selfHealCloudApi() {
     fetch("https://jsonblob.com/api/jsonBlob", {
@@ -1029,7 +1029,7 @@ function ensureAdminCredentials() {
     });
 }
 
-// ================= 12-POOL LIFETIME AUTO-UPGRADE MATRIX ENGINE (₹10 CRORE CLUB) =================
+// ================= 12-POOL LIFETIME AUTO-UPGRADE MATRIX ENGINE (₹1 CRORE CLUB) =================
 function runAutomatedAutopoolEngine(silent = false) {
     ensureAdminCredentials();
     const users = appData.users.filter(u => u.role === 'user');
@@ -1341,38 +1341,9 @@ function initFirebase() {
 
 // Primary Unstoppable Live Cloud REST Engine (3-second anti-cache polling + anti-rollback shield)
 function initUniversalCloudSync() {
-    try {
-        const bootUrl = LIVE_CLOUD_API + "?t=" + Date.now();
-        fetch(bootUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } })
-            .then(res => res.json())
-            .then(data => {
-                if (Date.now() - lastSaveTimestamp < 4000) return;
-                if (data && data.users && data.users.length > 0) {
-                    appData = data;
-                    ensureAdminCredentials();
-                    try { localStorage.setItem(DB_KEY, JSON.stringify(appData)); } catch(e){}
-                    refreshCurrentScreen();
-                }
-            })
-            .catch(()=>{});
-
-        // Polling loop: ensures all open devices & mobile phones sync instantly without browser cache lag (3 second interval)
-        setInterval(() => {
-            if (Date.now() - lastSaveTimestamp < 5000) return; // Prevent overwriting recent saves
-            const pollUrl = LIVE_CLOUD_API + "?t=" + Date.now();
-            fetch(pollUrl, { cache: 'no-store', headers: { 'Cache-Control': 'no-cache', 'Pragma': 'no-cache' } })
-                .then(res => res.json())
-                .then(data => {
-                    if (Date.now() - lastSaveTimestamp < 5000) return;
-                    if (data && data.users && JSON.stringify(data) !== JSON.stringify(appData)) {
-                        appData = data;
-                        ensureAdminCredentials();
-                        try { localStorage.setItem(DB_KEY, JSON.stringify(appData)); } catch(e){}
-                        refreshCurrentScreen();
-                    }
-                }).catch(()=>{});
-        }, 3000);
-    } catch(e) {}
+    // Legacy JSONBlob synchronization is disabled. It could restore deleted old-plan data.
+    // The new Firebase Firestore project is the only cloud authority now.
+    return;
 }
 
 // ================= ⚡ INSTANT MULTI-TAB LIVE SYNC =================
@@ -1440,7 +1411,7 @@ function copyMyReferralLink() {
 
 function shareReferralOnWhatsApp() {
     const refLink = getMyReferralLink();
-    const text = `🚀 Join Tirupati FX today! Double your money with ₹200 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click my direct referral link to register now:\n${refLink}`;
+    const text = `🚀 Join Tirupati FX today! Double your money with ₹200 Daily Growth Income and unlock ₹1 CRORE Autopool Passive Wealth!\n\n👉 Click my direct referral link to register now:\n${refLink}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -1465,7 +1436,7 @@ function copyAdminReferralLink() {
 
 function shareAdminReferralOnWhatsApp() {
     const refLink = getAdminReferralLink();
-    const text = `🚀 Join Tirupati FX Official Company Network! Double your money with ₹200 Daily Growth Income and unlock ₹10 CRORE Autopool Passive Wealth!\n\n👉 Click our official company link to register now:\n${refLink}`;
+    const text = `🚀 Join Tirupati FX Official Company Network! Double your money with ₹200 Daily Growth Income and unlock ₹1 CRORE Autopool Passive Wealth!\n\n👉 Click our official company link to register now:\n${refLink}`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(text)}`, '_blank');
 }
 
@@ -1506,7 +1477,7 @@ function saveData() {
     broadcastLiveUpdate();
 
     // 3. ALWAYS PUT to Primary Live Cloud REST API (Self-healing Unstoppable Global Cloud Sync)
-    try {
+    if (LIVE_CLOUD_API) try {
         fetch(LIVE_CLOUD_API, {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
@@ -2312,7 +2283,7 @@ function loadUserDashboard() {
     
     document.getElementById('userWallet').innerText = '₹' + (u.wallet || 0);
     document.getElementById('userDirects').innerText = (u.directs || 0) + '/4';
-    document.getElementById('userPool').innerText = (u.pool || 1) + " / 12 (10 Cr Club)";
+    document.getElementById('userPool').innerText = (u.pool || 1) + " / 12 (1 Cr Club)";
 
     // Update 12-Pool progress badge and card
     const POOL_NAMES_MAP = {
@@ -2468,5 +2439,5 @@ function showNotif(msg, type) {
 // Initialize on Load
 loadData();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a272f3f1a8ec3e74',t:'MTc4NjA3MDgwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
