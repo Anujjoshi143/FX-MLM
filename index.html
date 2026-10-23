@@ -1209,6 +1209,237 @@ button:active { transform: translateY(2px); box-shadow: 0 4px 12px rgba(255, 138
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
 }
 
+
+/* ================= CASH FLOW COMMAND CENTER — responsive financial ledger ================= */
+#adminCashflow {
+    --cf-gold: #ffbf69;
+    --cf-orange: #ff9f1c;
+    --cf-green: #00e676;
+    --cf-blue: #00b0ff;
+    --cf-violet: #8b5cf6;
+    --cf-red: #ff5573;
+    --cf-muted: #9298b6;
+}
+.cashflow-page-title { gap: 18px; }
+.cashflow-page-title > div:first-child { display: grid; gap: 7px; }
+.cashflow-eyebrow {
+    color: var(--cf-gold); font-size: .68rem; font-weight: 800;
+    letter-spacing: 2.4px; text-transform: uppercase; text-shadow: none;
+}
+.cashflow-live {
+    display: inline-flex; align-items: center; gap: 8px; flex: 0 0 auto;
+    padding: 9px 13px; border: 1px solid rgba(0,230,118,.25); border-radius: 999px;
+    background: rgba(0,230,118,.07); color: #8affc1; font-size: .66rem;
+    letter-spacing: 1.2px; text-shadow: none; white-space: nowrap;
+}
+.cashflow-live-dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--cf-green);
+    box-shadow: 0 0 0 5px rgba(0,230,118,.08), 0 0 16px rgba(0,230,118,.65);
+}
+.cashflow-shell {
+    position: relative; isolation: isolate; overflow: hidden;
+    padding: clamp(18px, 3vw, 34px); border-radius: 28px;
+    border: 1px solid rgba(255,191,105,.16);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(255,159,28,.11), transparent 34%),
+        radial-gradient(circle at 0% 45%, rgba(0,176,255,.07), transparent 32%),
+        linear-gradient(155deg, rgba(19,20,36,.97), rgba(7,8,17,.98));
+    box-shadow: 0 28px 70px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.06);
+}
+.cashflow-shell::before {
+    content: ""; position: absolute; z-index: -1; inset: 0; pointer-events: none;
+    background-image: linear-gradient(rgba(255,255,255,.017) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,.017) 1px, transparent 1px);
+    background-size: 34px 34px;
+    mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+.cashflow-hero {
+    padding: clamp(20px, 3vw, 30px); border-radius: 22px;
+    border: 1px solid rgba(255,191,105,.17);
+    background: linear-gradient(135deg, rgba(255,159,28,.105), rgba(255,255,255,.025) 48%, rgba(0,176,255,.045));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.055);
+}
+.cashflow-hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.cashflow-kicker {
+    margin-bottom: 8px; color: var(--cf-gold); font-size: .66rem;
+    font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase;
+}
+.cashflow-hero h3 {
+    margin: 0; color: #fff; font-size: clamp(1.25rem, 2.4vw, 1.8rem);
+    line-height: 1.25; letter-spacing: -.35px;
+}
+.cashflow-hero p { margin: 9px 0 0; max-width: 650px; color: var(--cf-muted); font-size: .86rem; line-height: 1.65; }
+.cashflow-refresh {
+    width: auto; flex: 0 0 auto; padding: 11px 15px; border: 1px solid rgba(255,191,105,.25);
+    border-radius: 12px; background: rgba(255,159,28,.09); color: var(--cf-gold);
+    box-shadow: none; font-size: .76rem; letter-spacing: 0;
+}
+.cashflow-refresh:hover { background: rgba(255,159,28,.16); box-shadow: 0 8px 24px rgba(255,159,28,.12); }
+.cashflow-collection {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 22px;
+    margin-top: 26px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.075);
+}
+.cashflow-collection-label { display: block; margin-bottom: 5px; color: #c5c9dc; font-size: .82rem; font-weight: 650; }
+.cashflow-total {
+    display: block; color: #fff6d0; font-size: clamp(2.35rem, 6vw, 4rem);
+    font-weight: 900; line-height: 1.1; letter-spacing: -2px;
+    font-variant-numeric: tabular-nums; text-shadow: 0 8px 30px rgba(255,159,28,.18);
+}
+.cashflow-formula { display: block; margin-top: 9px; color: var(--cf-muted); font-size: .78rem; font-variant-numeric: tabular-nums; }
+.cashflow-member-chip {
+    min-width: 176px; padding: 16px 18px; border-radius: 16px; text-align: right;
+    border: 1px solid rgba(0,176,255,.18); background: rgba(0,176,255,.055);
+}
+.cashflow-member-chip > span { display: block; color: #9eb9ca; font-size: .67rem; letter-spacing: .7px; text-transform: uppercase; }
+.cashflow-member-chip strong { display: block; margin: 2px 0; color: #fff; font-size: 1.85rem; line-height: 1.2; font-variant-numeric: tabular-nums; }
+.cashflow-member-chip small { color: var(--cf-muted); font-size: .68rem; }
+.cashflow-plan-strip {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 18px;
+    margin-top: 22px; padding: 11px 14px; border-radius: 12px;
+    background: rgba(0,0,0,.19); color: var(--cf-muted); font-size: .75rem;
+}
+.cashflow-plan-strip strong { color: #e9eafb; font-size: .82rem; font-variant-numeric: tabular-nums; }
+.cashflow-section-heading {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    margin: 30px 0 16px;
+}
+.cashflow-section-heading > div { display: flex; align-items: center; gap: 12px; }
+.cashflow-section-number {
+    display: grid; place-items: center; width: 34px; height: 34px; flex: 0 0 34px;
+    border: 1px solid rgba(255,191,105,.2); border-radius: 11px;
+    background: rgba(255,159,28,.07); color: var(--cf-gold); font-size: .7rem; font-weight: 850;
+}
+.cashflow-section-heading h4 { margin: 0; color: #f4f5ff; font-size: .98rem; letter-spacing: .1px; }
+.cashflow-section-heading p { margin: 4px 0 0; color: var(--cf-muted); font-size: .72rem; }
+.cashflow-audit-badge {
+    display: inline-flex; align-items: center; flex: 0 0 auto; padding: 7px 11px;
+    border: 1px solid rgba(0,230,118,.23); border-radius: 999px;
+    background: rgba(0,230,118,.07); color: #7dffB5; font-size: .68rem; font-weight: 800;
+}
+.cashflow-audit-badge.is-warning { border-color: rgba(255,85,115,.3); background: rgba(255,85,115,.08); color: #ff91a5; }
+.cashflow-allocation-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.cashflow-allocation-card {
+    --cf-accent: var(--cf-green); position: relative; overflow: hidden; min-width: 0;
+    padding: 20px; border: 1px solid rgba(255,255,255,.07); border-radius: 18px;
+    background: linear-gradient(155deg, rgba(255,255,255,.042), rgba(255,255,255,.014));
+    transition: transform .22s ease, border-color .22s ease, background .22s ease;
+}
+.cashflow-allocation-card::before {
+    content: ""; position: absolute; top: 0; left: 20px; right: 20px; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--cf-accent), transparent); opacity: .8;
+}
+.cashflow-allocation-card:hover { transform: translateY(-3px); border-color: color-mix(in srgb, var(--cf-accent) 30%, transparent); background: rgba(255,255,255,.045); }
+.cashflow-allocation-card.autopool { --cf-accent: var(--cf-orange); }
+.cashflow-allocation-card.company { --cf-accent: var(--cf-blue); }
+.cashflow-card-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.cashflow-card-icon {
+    display: grid; place-items: center; width: 35px; height: 35px; border-radius: 11px;
+    background: color-mix(in srgb, var(--cf-accent) 10%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cf-accent) 20%, transparent);
+    color: var(--cf-accent); font-size: .9rem;
+}
+.cashflow-percent { color: var(--cf-accent); font-size: .7rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.cashflow-card-label { display: block; min-height: 36px; margin-top: 16px; color: #c4c8db; font-size: .79rem; line-height: 1.45; }
+.cashflow-card-amount {
+    display: block; margin-top: 8px; color: var(--cf-accent); font-size: clamp(1.45rem, 3vw, 2rem);
+    line-height: 1.2; font-weight: 900; letter-spacing: -.6px; font-variant-numeric: tabular-nums;
+}
+.cashflow-card-formula { display: block; margin-top: 8px; color: var(--cf-muted); font-size: .69rem; font-variant-numeric: tabular-nums; }
+.cashflow-distribution-bar {
+    display: flex; overflow: hidden; height: 12px; margin-top: 20px; padding: 2px;
+    border: 1px solid rgba(255,255,255,.07); border-radius: 999px; background: rgba(0,0,0,.25);
+}
+.cashflow-distribution-bar span { display: block; height: 100%; }
+.cashflow-distribution-bar .sponsor { width: 15.1515%; background: linear-gradient(90deg, #00c968, #00e676); border-radius: 999px 0 0 999px; }
+.cashflow-distribution-bar .autopool { width: 55.5556%; background: linear-gradient(90deg, #ff9f1c, #ffbf69); }
+.cashflow-distribution-bar .company { width: 29.2929%; background: linear-gradient(90deg, #008fd4, #00b0ff); border-radius: 0 999px 999px 0; }
+.cashflow-bar-legend { display: flex; flex-wrap: wrap; gap: 9px 20px; margin-top: 11px; color: var(--cf-muted); font-size: .68rem; }
+.cashflow-bar-legend span { display: inline-flex; align-items: center; gap: 7px; }
+.cashflow-bar-legend i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.cashflow-bar-legend .sponsor { color: var(--cf-green); }
+.cashflow-bar-legend .autopool { color: var(--cf-orange); }
+.cashflow-bar-legend .company { color: var(--cf-blue); }
+.cashflow-equation {
+    display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 18px;
+    margin-top: 20px; padding: 18px 20px; border: 1px solid rgba(0,230,118,.14);
+    border-radius: 16px; background: rgba(0,230,118,.035);
+}
+.cashflow-equation.is-warning { border-color: rgba(255,85,115,.22); background: rgba(255,85,115,.035); }
+.cashflow-equation-label { display: block; margin-bottom: 6px; color: #b9bed5; font-size: .71rem; text-transform: uppercase; letter-spacing: .8px; }
+.cashflow-equation strong { display: block; overflow-wrap: anywhere; color: #f4f5ff; font-size: clamp(.88rem, 2vw, 1.08rem); font-variant-numeric: tabular-nums; }
+.cashflow-equation small { display: block; margin-top: 7px; color: var(--cf-muted); font-size: .7rem; line-height: 1.55; }
+.cashflow-balance-total { padding-left: 20px; border-left: 1px solid rgba(255,255,255,.08); text-align: right; }
+.cashflow-balance-total span { display: block; color: var(--cf-muted); font-size: .68rem; }
+.cashflow-balance-total strong { margin-top: 5px; color: var(--cf-green); font-size: 1.25rem; white-space: nowrap; }
+.cashflow-ledger-list { display: grid; gap: 9px; }
+.cashflow-ledger-row {
+    --cf-row-accent: var(--cf-violet); display: grid; grid-template-columns: auto minmax(0, 1fr) auto;
+    align-items: center; gap: 14px; padding: 15px 17px; border: 1px solid rgba(255,255,255,.06);
+    border-radius: 14px; background: rgba(4,5,12,.31);
+}
+.cashflow-ledger-row.gold { --cf-row-accent: var(--cf-gold); }
+.cashflow-ledger-row.orange { --cf-row-accent: var(--cf-orange); }
+.cashflow-ledger-row.green { --cf-row-accent: var(--cf-green); }
+.cashflow-ledger-row.red { --cf-row-accent: var(--cf-red); border-color: rgba(255,85,115,.14); background: rgba(255,85,115,.025); }
+.cashflow-ledger-icon {
+    display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px;
+    background: color-mix(in srgb, var(--cf-row-accent) 8%, transparent); color: var(--cf-row-accent);
+    border: 1px solid color-mix(in srgb, var(--cf-row-accent) 16%, transparent); font-size: .78rem;
+}
+.cashflow-ledger-copy strong { display: block; color: #dfe2f1; font-size: .8rem; line-height: 1.45; }
+.cashflow-ledger-copy small { display: block; margin-top: 3px; color: var(--cf-muted); font-size: .67rem; line-height: 1.4; }
+.cashflow-ledger-amount { color: var(--cf-row-accent); font-size: 1.02rem; font-weight: 900; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.cashflow-pool-audit {
+    display: flex; align-items: center; flex-wrap: wrap; gap: 8px 16px; margin-top: 12px; padding: 12px 15px;
+    border-radius: 12px; background: rgba(255,191,105,.035); color: var(--cf-muted); font-size: .69rem;
+}
+.cashflow-pool-audit strong { color: #dfe2f1; font-variant-numeric: tabular-nums; }
+.cashflow-pool-audit .ok { margin-left: auto; color: var(--cf-green); font-weight: 800; }
+.cashflow-pool-audit .warning { margin-left: auto; color: var(--cf-red); font-weight: 800; }
+.cashflow-footer {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px 18px;
+    margin-top: 24px; padding-top: 17px; border-top: 1px solid rgba(255,255,255,.06);
+    color: var(--cf-muted); font-size: .67rem;
+}
+.cashflow-footer span:first-child { display: inline-flex; align-items: center; gap: 7px; }
+.cashflow-footer i { color: var(--cf-green); }
+@media (max-width: 980px) {
+    .cashflow-allocation-grid { grid-template-columns: 1fr; }
+    .cashflow-card-label { min-height: 0; }
+    .cashflow-allocation-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 16px; }
+    .cashflow-card-top, .cashflow-card-label, .cashflow-card-formula { grid-column: 1; }
+    .cashflow-card-amount { grid-column: 2; grid-row: 1 / 4; align-self: center; margin: 0; text-align: right; }
+    .cashflow-card-label { margin-top: 10px; }
+}
+@media (max-width: 700px) {
+    .cashflow-page-title { align-items: flex-start; }
+    .cashflow-live { padding: 7px 9px; font-size: .57rem; }
+    .cashflow-shell { border-radius: 22px; }
+    .cashflow-hero-top { flex-direction: column; }
+    .cashflow-refresh { align-self: flex-start; }
+    .cashflow-collection { grid-template-columns: 1fr; align-items: start; }
+    .cashflow-member-chip { min-width: 0; width: 100%; text-align: left; }
+    .cashflow-member-chip strong { display: inline; margin-right: 7px; }
+    .cashflow-section-heading { align-items: flex-start; }
+    .cashflow-section-heading p { max-width: 210px; }
+    .cashflow-equation { grid-template-columns: 1fr; }
+    .cashflow-balance-total { padding: 13px 0 0; border-left: 0; border-top: 1px solid rgba(255,255,255,.08); text-align: left; }
+    .cashflow-pool-audit .ok, .cashflow-pool-audit .warning { width: 100%; margin-left: 0; }
+}
+@media (max-width: 480px) {
+    .cashflow-page-title { flex-direction: column; }
+    .cashflow-total { letter-spacing: -1px; }
+    .cashflow-plan-strip { align-items: flex-start; flex-direction: column; }
+    .cashflow-allocation-card { display: block; }
+    .cashflow-card-amount { margin-top: 8px; text-align: left; }
+    .cashflow-ledger-row { grid-template-columns: auto minmax(0, 1fr); gap: 11px; }
+    .cashflow-ledger-amount { grid-column: 2; font-size: 1.12rem; }
+    .cashflow-audit-badge { padding: 6px 8px; font-size: .6rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .cashflow-allocation-card, .cashflow-refresh { transition: none; }
+}
+
 </style>
 </head>
 <body>
@@ -1897,50 +2128,172 @@ button:active { transform: translateY(2px); box-shadow: 0 4px 12px rgba(255, 138
 
         <!-- ADMIN: CASH FLOW -->
         <div id="adminCashflow" class="admin-view hidden">
-            <div class="header-title">💰 Detailed Cash Flow</div>
-            <div class="panel">
-                <h3>Money Distribution Breakdown</h3>
-                <p style="color: #6b6b8b; margin-bottom: 20px;">Real-time stats based on approved joinings</p>
-                
-                <div style="display: grid; gap: 15px;">
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Total Joining Fees (₹99 × Users)</span>
-                        <span style="color: #fff; font-weight: bold;" id="cfJoining">₹0</span>
+            <div class="header-title cashflow-page-title">
+                <div>
+                    <span class="cashflow-eyebrow">Financial Command Center</span>
+                    <div>Detailed Cash Flow</div>
+                </div>
+                <span class="cashflow-live"><span class="cashflow-live-dot"></span> LIVE LEDGER</span>
+            </div>
+
+            <section class="cashflow-shell" aria-labelledby="cashflowHeading">
+                <div class="cashflow-hero">
+                    <div class="cashflow-hero-top">
+                        <div>
+                            <div class="cashflow-kicker">Approved Members · Official ₹99 Plan</div>
+                            <h3 id="cashflowHeading">Money Distribution Breakdown</h3>
+                            <p>Approved member IDs se exact calculation aur saved ledger ka independent audit—ADMIN001 member count me include nahi hota.</p>
+                        </div>
+                        <button type="button" class="cashflow-refresh" onclick="updateCashFlow(true)"><i class="fas fa-sync-alt"></i> Recalculate</button>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Paid to Direct Sponsors (₹15 each)</span>
-                        <span style="color: #00e676; font-weight: bold;" id="cfSponsorDetail">₹0</span>
+
+                    <div class="cashflow-collection">
+                        <div>
+                            <span class="cashflow-collection-label">Total Joining Fees · Approved Members</span>
+                            <strong class="cashflow-total" id="cfJoining">₹0</strong>
+                            <small class="cashflow-formula" id="cfJoiningFormula">0 approved members × ₹99</small>
+                        </div>
+                        <div class="cashflow-member-chip">
+                            <span>Approved Members</span>
+                            <strong id="cfMemberCount">0</strong>
+                            <small id="cfCurrentMembers">0 current member IDs</small>
+                        </div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Daily Growth Fund Distributed</span>
-                        <span style="color: #2979ff; font-weight: bold;" id="cfGrowth">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Autopool Reserve (₹55 per user)</span>
-                        <span style="color: #ff9f1c; font-weight: bold;" id="cfAutopool">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Company / Admin Reserve (₹29 per user)</span>
-                        <span style="color: #00b0ff; font-weight: bold;" id="cfCompany">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Autopool Gross Generated (Pool completions)</span>
-                        <span style="color: #ffd700; font-weight: bold;" id="cfPoolGross">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Auto-Upgrade Deducted (Gross → Net)</span>
-                        <span style="color: #ff9f1c; font-weight: bold;" id="cfPoolUpgrade">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px;">
-                        <span>Net Autopool Profit Paid to Members</span>
-                        <span style="color: #00e676; font-weight: bold;" id="cfPoolNet">₹0</span>
-                    </div>
-                    <div style="display: flex; justify-content: space-between; padding: 15px; background: #0f0f1a; border-radius: 8px; border: 1px solid #ff1744;">
-                        <span>Admin Profit (5% of Withdrawals)</span>
-                        <span style="color: #ff1744; font-weight: bold;" id="cfAdmin">₹0</span>
+
+                    <div class="cashflow-plan-strip">
+                        <span>Official per-member distribution</span>
+                        <strong>₹15 Sponsor + ₹55 Autopool + ₹29 Company = ₹99</strong>
                     </div>
                 </div>
-            </div>
+
+                <div class="cashflow-section-heading">
+                    <div>
+                        <span class="cashflow-section-number">01</span>
+                        <div>
+                            <h4>Joining Fee Allocation</h4>
+                            <p>Har approved joining ka plan-wise breakup</p>
+                        </div>
+                    </div>
+                    <span class="cashflow-audit-badge" id="cfAuditBadge" role="status">✓ Balanced</span>
+                </div>
+
+                <div class="cashflow-allocation-grid">
+                    <article class="cashflow-allocation-card sponsor">
+                        <div class="cashflow-card-top">
+                            <span class="cashflow-card-icon"><i class="fas fa-user-friends"></i></span>
+                            <span class="cashflow-percent">15.15% / member</span>
+                        </div>
+                        <span class="cashflow-card-label">Paid to Direct Sponsors</span>
+                        <strong class="cashflow-card-amount" id="cfSponsorDetail">₹0</strong>
+                        <small class="cashflow-card-formula" id="cfSponsorFormula">0 × ₹15 direct bonus</small>
+                    </article>
+
+                    <article class="cashflow-allocation-card autopool">
+                        <div class="cashflow-card-top">
+                            <span class="cashflow-card-icon"><i class="fas fa-sitemap"></i></span>
+                            <span class="cashflow-percent">55.56% / member</span>
+                        </div>
+                        <span class="cashflow-card-label">Autopool Reserve</span>
+                        <strong class="cashflow-card-amount" id="cfAutopool">₹0</strong>
+                        <small class="cashflow-card-formula" id="cfAutopoolFormula">0 × ₹55 pool reserve</small>
+                    </article>
+
+                    <article class="cashflow-allocation-card company">
+                        <div class="cashflow-card-top">
+                            <span class="cashflow-card-icon"><i class="fas fa-building"></i></span>
+                            <span class="cashflow-percent">29.29% / member</span>
+                        </div>
+                        <span class="cashflow-card-label">Company / Admin Reserve</span>
+                        <strong class="cashflow-card-amount" id="cfCompany">₹0</strong>
+                        <small class="cashflow-card-formula" id="cfCompanyFormula">0 × ₹29 company reserve</small>
+                    </article>
+                </div>
+
+                <div class="cashflow-distribution-bar" role="img" aria-label="Per-member distribution: 15 rupees sponsor, 55 rupees autopool, 29 rupees company">
+                    <span class="sponsor"></span><span class="autopool"></span><span class="company"></span>
+                </div>
+                <div class="cashflow-bar-legend">
+                    <span class="sponsor"><i></i> Sponsor ₹15</span>
+                    <span class="autopool"><i></i> Autopool ₹55</span>
+                    <span class="company"><i></i> Company ₹29</span>
+                </div>
+
+                <div class="cashflow-equation" id="cfEquationBox">
+                    <div>
+                        <span class="cashflow-equation-label">Automatic Allocation Audit</span>
+                        <strong id="cfBalanceEquation">₹0 = ₹0 + ₹0 + ₹0</strong>
+                        <small id="cfAuditText">₹15 + ₹55 + ₹29 = ₹99 · Difference ₹0</small>
+                    </div>
+                    <div class="cashflow-balance-total">
+                        <span>Total Allocated</span>
+                        <strong id="cfAllocated">₹0</strong>
+                    </div>
+                </div>
+
+                <div class="cashflow-section-heading">
+                    <div>
+                        <span class="cashflow-section-number">02</span>
+                        <div>
+                            <h4>Income & Payout Ledger</h4>
+                            <p>Joining allocation ke baad ki actual financial activity</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cashflow-ledger-list">
+                    <div class="cashflow-ledger-row">
+                        <span class="cashflow-ledger-icon"><i class="fas fa-chart-line"></i></span>
+                        <div class="cashflow-ledger-copy">
+                            <strong>Daily Growth Fund Distributed</strong>
+                            <small>₹5/day · maximum 40 days · actual credited ledger</small>
+                        </div>
+                        <span class="cashflow-ledger-amount" id="cfGrowth">₹0</span>
+                    </div>
+                    <div class="cashflow-ledger-row gold">
+                        <span class="cashflow-ledger-icon"><i class="fas fa-coins"></i></span>
+                        <div class="cashflow-ledger-copy">
+                            <strong>Autopool Gross Generated</strong>
+                            <small>Completed pool levels ka gross value</small>
+                        </div>
+                        <span class="cashflow-ledger-amount" id="cfPoolGross">₹0</span>
+                    </div>
+                    <div class="cashflow-ledger-row orange">
+                        <span class="cashflow-ledger-icon"><i class="fas fa-level-up-alt"></i></span>
+                        <div class="cashflow-ledger-copy">
+                            <strong>Auto-Upgrade Deducted</strong>
+                            <small>Gross se next pool upgrade ki deduction</small>
+                        </div>
+                        <span class="cashflow-ledger-amount" id="cfPoolUpgrade">₹0</span>
+                    </div>
+                    <div class="cashflow-ledger-row green">
+                        <span class="cashflow-ledger-icon"><i class="fas fa-wallet"></i></span>
+                        <div class="cashflow-ledger-copy">
+                            <strong>Net Autopool Profit Paid to Members</strong>
+                            <small>Member wallets me actual net pool profit</small>
+                        </div>
+                        <span class="cashflow-ledger-amount" id="cfPoolNet">₹0</span>
+                    </div>
+                    <div class="cashflow-ledger-row red">
+                        <span class="cashflow-ledger-icon"><i class="fas fa-percentage"></i></span>
+                        <div class="cashflow-ledger-copy">
+                            <strong>Admin Profit</strong>
+                            <small>5% withdrawal processing charge ledger</small>
+                        </div>
+                        <span class="cashflow-ledger-amount" id="cfAdmin">₹0</span>
+                    </div>
+                </div>
+
+                <div class="cashflow-pool-audit">
+                    <span>Autopool identity: Gross − Upgrade = Net</span>
+                    <strong id="cfPoolEquation">₹0 − ₹0 = ₹0</strong>
+                    <span class="ok" id="cfPoolAudit">✓ Verified</span>
+                </div>
+
+                <footer class="cashflow-footer">
+                    <span><i class="fas fa-shield-alt"></i> Real-time calculation · No wallet balance is changed by this audit</span>
+                    <span id="cfLastUpdated">Waiting for first calculation</span>
+                </footer>
+            </section>
         </div>
 
         <!-- ======================= USER VIEWS ======================= -->
@@ -2225,6 +2578,7 @@ let appData = {
     withdrawals: [],
     transactions: [],
     stats: {
+        totalJoinings: 0,
         totalDistributed: 0,
         sponsorPaid: 0,
         dailyPaid: 0,
@@ -2283,6 +2637,14 @@ function ensureAdminCredentials() {
         }
         appData.pricingVersion = PRICING.VERSION;
     }
+    if (!Array.isArray(appData.users)) appData.users = [];
+    if (!appData.stats || typeof appData.stats !== 'object') appData.stats = {};
+    ['totalJoinings', 'totalDistributed', 'sponsorPaid', 'dailyPaid', 'autopoolReserve',
+     'autopoolPaid', 'companyReserve', 'poolGrossPaid', 'poolUpgradeDeducted'].forEach(key => {
+        const value = Number(appData.stats[key]);
+        appData.stats[key] = Number.isFinite(value) && value >= 0 ? value : 0;
+    });
+
     let admin = appData.users.find(u => u.id === 'ADMIN001');
     if (!admin) {
         admin = { id: 'ADMIN001', name: 'Super Admin', passHash: 'e6ddc0d1fd19ddeb', role: 'admin', wallet: 0, profit: 0 };
@@ -2314,8 +2676,13 @@ function ensureAdminCredentials() {
     if (!appData.pending) appData.pending = [];
     if (!appData.users) appData.users = [admin];
 
-    // Ensure all user passwords in database are one-way hashed
+    // Legacy records without role must still count as approved members.
+    // This fixes the old ₹99-vs-₹198 mismatch when one member had no role field.
     appData.users.forEach(u => {
+        if (!u || typeof u !== 'object') return;
+        const memberId = String(u.id || '').trim().toUpperCase();
+        const memberRole = String(u.role || '').trim().toLowerCase();
+        u.role = (memberId === 'ADMIN001' || memberRole === 'admin') ? 'admin' : 'user';
         if (u.password && !u.passHash) {
             u.passHash = secureHash(u.password);
             delete u.password;
@@ -2875,11 +3242,15 @@ function adminSecureResetEntireDatabase() {
             withdrawals: [],
             transactions: [],
             stats: {
+                totalJoinings: 0,
                 totalDistributed: 0,
                 sponsorPaid: 0,
                 dailyPaid: 0,
                 autopoolReserve: 0,
-                autopoolPaid: 0
+                autopoolPaid: 0,
+                companyReserve: 0,
+                poolGrossPaid: 0,
+                poolUpgradeDeducted: 0
             }
         };
 
@@ -3285,10 +3656,7 @@ function approvePending(index) {
     }
 
     // ₹99 split: ₹15 sponsor + ₹55 autopool reserve + ₹29 company reserve (PDF p6)
-    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + PLAN.AUTOPOOL_RESERVE;
-    appData.stats.companyReserve = (appData.stats.companyReserve || 0) + PLAN.COMPANY_RESERVE;
-    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + PLAN.DIRECT_BONUS;
-    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + PLAN.DIRECT_BONUS;
+    recordJoiningDistribution();
 
     runAutomatedAutopoolEngine(true);
     saveData(); // Atomic cloud save after pool advancement
@@ -3483,10 +3851,7 @@ function addMemberDirect() {
         if (sponsorUser.directs >= PLAN.QUALIFY_DIRECTS) sponsorUser.unlocked = true;
     }
 
-    appData.stats.autopoolReserve = (appData.stats.autopoolReserve || 0) + PLAN.AUTOPOOL_RESERVE;
-    appData.stats.companyReserve = (appData.stats.companyReserve || 0) + PLAN.COMPANY_RESERVE;
-    appData.stats.sponsorPaid = (appData.stats.sponsorPaid || 0) + PLAN.DIRECT_BONUS;
-    appData.stats.totalDistributed = (appData.stats.totalDistributed || 0) + PLAN.DIRECT_BONUS;
+    recordJoiningDistribution();
 
     saveData();
     renderAllUsers();
@@ -3495,25 +3860,187 @@ function addMemberDirect() {
     runAutomatedAutopoolEngine(true);
 }
 
-function updateCashFlow() {
-    const userCount = appData.users.filter(u => u.role === 'user').length;
-    const fee = (appData.settings && appData.settings.joiningFee) ? appData.settings.joiningFee : PLAN.JOINING_FEE;
-    const joiningFeeTotal = userCount * fee;
-    const st = appData.stats || {};
+// ================= RECONCILED CASH FLOW ENGINE =================
+// Rupee values are sanitized once so bad cloud values never produce NaN/undefined.
+function moneyValue(value) {
+    const number = Number(value);
+    return Number.isFinite(number) && number > 0 ? number : 0;
+}
 
-    const setTxt = (id, val) => { const el = document.getElementById(id); if (el) el.innerText = val; };
+function getApprovedMembers() {
+    const records = (appData && Array.isArray(appData.users)) ? appData.users : [];
+    return records.filter(u => {
+        if (!u || typeof u !== 'object') return false;
+        const id = String(u.id || '').trim().toUpperCase();
+        const role = String(u.role || 'user').trim().toLowerCase();
+        return id !== 'ADMIN001' && role !== 'admin';
+    });
+}
 
-    setTxt('cfJoining', inr(joiningFeeTotal));
-    setTxt('cfSponsorDetail', inr(st.sponsorPaid || 0));
-    setTxt('cfGrowth', inr(st.dailyPaid || 0));
-    setTxt('cfAutopool', inr(st.autopoolReserve || 0));
-    setTxt('cfCompany', inr(st.companyReserve || 0));
-    setTxt('cfPoolGross', inr(st.poolGrossPaid || 0));
-    setTxt('cfPoolUpgrade', inr(st.poolUpgradeDeducted || 0));
-    setTxt('cfPoolNet', inr(st.autopoolPaid || 0));
+function getConfiguredJoiningFee() {
+    const configured = appData && appData.settings ? moneyValue(appData.settings.joiningFee) : 0;
+    return configured || PLAN.JOINING_FEE;
+}
 
-    const admin = appData.users.find(u => u.id === 'ADMIN001');
-    setTxt('cfAdmin', inr(admin ? (admin.profit || 0) : 0));
+function countFromLedger(amount, unit) {
+    if (!unit) return 0;
+    // Only complete per-member units count; partial/corrupt amounts trigger the audit instead of inflating users.
+    return Math.max(0, Math.floor((moneyValue(amount) + 1e-9) / unit));
+}
+
+// Historical approved joinings can be greater than current member IDs after deletion.
+// All three joining ledgers are independent cross-checks for legacy data recovery.
+function reconcileApprovedJoiningCount(stats, currentMemberCount) {
+    const st = stats || {};
+    return Math.max(
+        Math.floor(moneyValue(currentMemberCount)),
+        Math.floor(moneyValue(st.totalJoinings)),
+        countFromLedger(st.sponsorPaid, PLAN.DIRECT_BONUS),
+        countFromLedger(st.autopoolReserve, PLAN.AUTOPOOL_RESERVE),
+        countFromLedger(st.companyReserve, PLAN.COMPANY_RESERVE)
+    );
+}
+
+// Single writer for every new approved joining (normal approval + admin direct add).
+function recordJoiningDistribution() {
+    if (!appData.stats || typeof appData.stats !== 'object') appData.stats = {};
+    const st = appData.stats;
+    // This runs after the new member is pushed, hence subtract the new current ID.
+    const previousCurrentMembers = Math.max(0, getApprovedMembers().length - 1);
+    const previousJoinings = reconcileApprovedJoiningCount(st, previousCurrentMembers);
+
+    st.totalJoinings = previousJoinings + 1;
+    st.autopoolReserve = moneyValue(st.autopoolReserve) + PLAN.AUTOPOOL_RESERVE;
+    st.companyReserve = moneyValue(st.companyReserve) + PLAN.COMPANY_RESERVE;
+    st.sponsorPaid = moneyValue(st.sponsorPaid) + PLAN.DIRECT_BONUS;
+    st.totalDistributed = moneyValue(st.totalDistributed) + PLAN.DIRECT_BONUS;
+}
+
+function calculateMoneyDistribution() {
+    const st = (appData && appData.stats) || {};
+    const currentMemberCount = getApprovedMembers().length;
+
+    // MAIN FIX: approved member IDs are the source of truth for the ₹99 breakdown.
+    // Saved counters are cross-checked below, so legacy missing roles or doubled counters
+    // can never make one member look like ₹30 + ₹110 + ₹58.
+    const joiningCount = currentMemberCount;
+    const fee = getConfiguredJoiningFee();
+    const joiningTotal = joiningCount * fee;
+    const sponsorPaid = joiningCount * PLAN.DIRECT_BONUS;
+    const autopoolReserve = joiningCount * PLAN.AUTOPOOL_RESERVE;
+    const companyReserve = joiningCount * PLAN.COMPANY_RESERVE;
+    const allocated = sponsorPaid + autopoolReserve + companyReserve;
+    const planDifference = Math.round((joiningTotal - allocated + Number.EPSILON) * 100) / 100;
+
+    // Preserve the saved ledger as an audit trail; never silently rewrite financial history.
+    const ledgerSponsorPaid = moneyValue(st.sponsorPaid);
+    const ledgerAutopoolReserve = moneyValue(st.autopoolReserve);
+    const ledgerCompanyReserve = moneyValue(st.companyReserve);
+    const ledgerAllocated = ledgerSponsorPaid + ledgerAutopoolReserve + ledgerCompanyReserve;
+    const ledgerDifference = Math.round((allocated - ledgerAllocated + Number.EPSILON) * 100) / 100;
+    const planBalanced = Math.abs(planDifference) < 0.005;
+    const ledgerBalanced = Math.abs(ledgerDifference) < 0.005;
+
+    const poolGross = moneyValue(st.poolGrossPaid);
+    const poolUpgrade = moneyValue(st.poolUpgradeDeducted);
+    const poolNet = moneyValue(st.autopoolPaid);
+    const calculatedPoolNet = poolGross - poolUpgrade;
+    const poolDifference = Math.round((poolNet - calculatedPoolNet + Number.EPSILON) * 100) / 100;
+    const admin = (appData && Array.isArray(appData.users))
+        ? appData.users.find(u => u && String(u.id || '').toUpperCase() === 'ADMIN001')
+        : null;
+
+    return {
+        currentMemberCount,
+        joiningCount,
+        fee,
+        joiningTotal,
+        sponsorPaid,
+        autopoolReserve,
+        companyReserve,
+        allocated,
+        planDifference,
+        planBalanced,
+        ledgerAllocated,
+        ledgerDifference,
+        ledgerBalanced,
+        balanced: planBalanced && ledgerBalanced,
+        difference: planBalanced ? ledgerDifference : planDifference,
+        dailyPaid: moneyValue(st.dailyPaid),
+        poolGross,
+        poolUpgrade,
+        poolNet,
+        calculatedPoolNet,
+        poolDifference,
+        poolBalanced: Math.abs(poolDifference) < 0.005,
+        adminProfit: admin ? moneyValue(admin.profit) : 0
+    };
+}
+
+function updateCashFlow(notify = false) {
+    const d = calculateMoneyDistribution();
+    const setTxt = (id, value) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = value;
+    };
+    const joiningWord = d.joiningCount === 1 ? 'member' : 'members';
+    const memberWord = d.currentMemberCount === 1 ? 'ID' : 'IDs';
+
+    setTxt('cfJoining', inr(d.joiningTotal));
+    setTxt('cfJoiningFormula', `${d.joiningCount} approved ${joiningWord} × ${inr(d.fee)}`);
+    setTxt('cfMemberCount', d.joiningCount.toLocaleString('en-IN'));
+    setTxt('cfCurrentMembers', `${d.currentMemberCount} current member ${memberWord} · ADMIN001 excluded`);
+
+    setTxt('cfSponsorDetail', inr(d.sponsorPaid));
+    setTxt('cfSponsorFormula', `${d.joiningCount} approved × ${inr(PLAN.DIRECT_BONUS)} · member-based`);
+    setTxt('cfAutopool', inr(d.autopoolReserve));
+    setTxt('cfAutopoolFormula', `${d.joiningCount} approved × ${inr(PLAN.AUTOPOOL_RESERVE)} · member-based`);
+    setTxt('cfCompany', inr(d.companyReserve));
+    setTxt('cfCompanyFormula', `${d.joiningCount} approved × ${inr(PLAN.COMPANY_RESERVE)} · member-based`);
+
+    setTxt('cfAllocated', inr(d.allocated));
+    setTxt('cfBalanceEquation', `${inr(d.joiningTotal)} = ${inr(d.sponsorPaid)} + ${inr(d.autopoolReserve)} + ${inr(d.companyReserve)}`);
+    setTxt('cfAuditText', d.balanced
+        ? `${inr(PLAN.DIRECT_BONUS)} + ${inr(PLAN.AUTOPOOL_RESERVE)} + ${inr(PLAN.COMPANY_RESERVE)} = ${inr(PLAN.JOINING_FEE)} per member · Saved ledger verified, difference ₹0`
+        : !d.planBalanced
+            ? `Plan difference: ${inr(Math.abs(d.planDifference))}. Collections ${inr(d.joiningTotal)}; allocation ${inr(d.allocated)}. Check the configured joining fee.`
+            : `Saved ledger mismatch: stored ${inr(d.ledgerAllocated)} vs member-based ${inr(d.allocated)} · Difference ${inr(Math.abs(d.ledgerDifference))}. Correct plan totals are shown above.`);
+
+    const auditBadge = document.getElementById('cfAuditBadge');
+    if (auditBadge) {
+        auditBadge.innerText = d.balanced ? '✓ Ledger Verified' : (!d.planBalanced ? '⚠ Plan Mismatch' : '⚠ Saved Ledger Mismatch');
+        auditBadge.classList.toggle('is-warning', !d.balanced);
+    }
+    const equationBox = document.getElementById('cfEquationBox');
+    if (equationBox) equationBox.classList.toggle('is-warning', !d.balanced);
+    const balanceTotal = document.querySelector('.cashflow-balance-total strong');
+    if (balanceTotal) balanceTotal.style.color = d.balanced ? 'var(--cf-green)' : 'var(--cf-red)';
+
+    setTxt('cfGrowth', inr(d.dailyPaid));
+    setTxt('cfPoolGross', inr(d.poolGross));
+    setTxt('cfPoolUpgrade', inr(d.poolUpgrade));
+    setTxt('cfPoolNet', inr(d.poolNet));
+    setTxt('cfAdmin', inr(d.adminProfit));
+    setTxt('cfPoolEquation', `${inr(d.poolGross)} − ${inr(d.poolUpgrade)} = ${inr(d.calculatedPoolNet)}`);
+
+    const poolAudit = document.getElementById('cfPoolAudit');
+    if (poolAudit) {
+        poolAudit.innerText = d.poolBalanced
+            ? '✓ Net payout matches'
+            : `⚠ Recorded net ${inr(d.poolNet)} · Difference ${inr(Math.abs(d.poolDifference))}`;
+        poolAudit.className = d.poolBalanced ? 'ok' : 'warning';
+    }
+    setTxt('cfLastUpdated', 'Calculated at ' + new Date().toLocaleTimeString('en-IN', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit'
+    }));
+
+    if (notify) {
+        showNotif(d.balanced
+            ? `✅ Cash flow verified: ${d.joiningCount} × ${inr(d.fee)} = ${inr(d.joiningTotal)}`
+            : `Correct member-based totals shown. Audit difference: ${inr(Math.abs(d.difference))}`,
+            d.balanced ? 'success' : 'error');
+    }
+    return d;
 }
 
 
@@ -4087,5 +4614,5 @@ function renderUserPoolLadder(u) {
 // Initialize on Load
 loadData();
 </script>
-<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a272f3f1a8ec3e74',t:'MTc4NjA3MDgwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4e6e013efce9baf',t:'MTc5MjY1NTA1MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a272f3f1a8ec3e74',t:'MTc4NjA3MDgwNw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4e6e013efce9baf',t:'MTc5MjY1NTA1MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a4f18c2f9a2ea74f',t:'MTc5Mjc2Njk1OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
